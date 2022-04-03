@@ -1,0 +1,15 @@
+services:
+  app:
+    depends_on:
+      - php
+    image: nginx:stable-alpine
+    volumes:
+      - ./localhost.nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./php:/var/www/html:ro
+    ports:
+      - 80:80
+  php:
+    image: php:fpm-alpine
+    working_dir: /var/www/html
+    volumes:
+      - ./php:/var/www/html:delegated
