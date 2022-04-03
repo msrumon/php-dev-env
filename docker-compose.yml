@@ -1,0 +1,8 @@
+services:
+  app:
+    image: php:apache
+    working_dir: /var/www/html
+    volumes:
+      - ./php:/var/www/html:delegated
+    ports:
+      - 80:80
